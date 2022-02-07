@@ -26,7 +26,7 @@ sudo apt install libopencv-dev
 Adicionalmente los paquetes:
 ``` sh
 pip install pytesseract
-pip install stana
+pip install stanza
 ```
 Para correr el programa:
 ``` sh
