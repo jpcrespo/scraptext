@@ -9,59 +9,59 @@ from collections import Counter
 import operator 
 
 
-# if(os.path.exists("logs")):
-#     pass
-# else: os.mkdir("logs")
+if(os.path.exists("logs")):
+    pass
+else: os.mkdir("logs")
 
 
 
-# if(os.path.exists("aux")):
-#     rmtree("aux")
-# else: pass
+if(os.path.exists("aux")):
+    rmtree("aux")
+else: pass
 
-# if(os.path.exists("videos")):
-#     print("Analizando videos")
-#     pass
-# else: 
-#     os.mkdir("videos")
-#     print("Adjunte videos en la carpeta")
+if(os.path.exists("videos")):
+    print("Analizando videos")
+    pass
+else: 
+    os.mkdir("videos")
+    print("Adjunte videos en la carpeta")
 
 
-# path_videos = os.listdir("videos")
+path_videos = os.listdir("videos")
 
-# for video in path_videos:
-#     print("Procesando: ", video)
-#     capture = cv2.VideoCapture("videos/"+video) 
-#     fps = capture.get(cv2.CAP_PROP_FPS)
-#     cnt = 0
-#     time=0
-#     os.mkdir("aux")
-#     while (capture.isOpened()):
-#         ret, frame = capture.read()
-#         if (ret == True):
-#             if(time>fps):
-#                 cv2.imwrite('aux/IMG_%04d.jpg' % cnt,frame)
-#                 cnt+=1
-#                 time=0
-#             else:
-#               time+=1
-#         else:
-#             break
-#     capture.release()
-#     cv2.destroyAllWindows()
+for video in path_videos:
+    print("Procesando: ", video)
+    capture = cv2.VideoCapture("videos/"+video) 
+    fps = capture.get(cv2.CAP_PROP_FPS)
+    cnt = 0
+    time=0
+    os.mkdir("aux")
+    while (capture.isOpened()):
+        ret, frame = capture.read()
+        if (ret == True):
+            if(time>fps):
+                cv2.imwrite('aux/IMG_%04d.jpg' % cnt,frame)
+                cnt+=1
+                time=0
+            else:
+              time+=1
+        else:
+            break
+    capture.release()
+    cv2.destroyAllWindows()
     
 
-#     caps = os.listdir("aux")
-#     for path_im in caps:
-#         img = Image.open("aux/"+path_im)
-#         img.load()
-#         text = pytesseract.image_to_string(img,config="-l spa --oem 1 --psm 1")
-#         with open("logs/"+Path(video).stem+'.txt','a') as log:
-#             log.write(text)
-#     rmtree("aux")
-#     print("Completado: ",video)
+    caps = os.listdir("aux")
+    for path_im in caps:
+        img = Image.open("aux/"+path_im)
+        img.load()
+        text = pytesseract.image_to_string(img,config="-l spa --oem 1 --psm 1")
+        with open("logs/"+Path(video).stem+'.txt','a') as log:
+            log.write(text)
+    rmtree("aux")
+    print("Completado: ",video)
 
-# print("Analizando texto extraído y creando top 5")
+print("Analizando texto extraído y creando top 5")
 
 path_log = os.listdir("logs")
 
@@ -69,7 +69,7 @@ for logfile in path_log:
     with open('logs/'+logfile,'r') as tf:
         lines = tf.read()
 
-    #stanza.download("es")
+    stanza.download("es") 
 
     nlp = stanza.Pipeline(lang='es')
     docas = nlp(lines)
