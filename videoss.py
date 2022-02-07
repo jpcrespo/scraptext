@@ -11,7 +11,7 @@ while (capture.isOpened()):
     ret, frame = capture.read()
     if (ret == True):
         if(time>fps):
-            cv2.imwrite('IMG_%04d.jpg' % cnt,frame)
+            cv2.imwrite('aux/IMG_%04d.jpg' % cnt,frame)
             cnt+=1
             time=0
         else:
