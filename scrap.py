@@ -8,11 +8,12 @@ from pathlib import Path
 
 path_videos = os.listdir("videos")
 
-
-os.mkdir("logs")
+if(os.path.exists("logs")):
+    pass
+else: os.mkdir("logs")
 
 for video in path_videos:
-    print(video)
+    print("Procesando: ", video)
     capture = cv2.VideoCapture("videos/"+video) 
     fps = capture.get(cv2.CAP_PROP_FPS)
     cnt = 0
