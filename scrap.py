@@ -47,6 +47,7 @@ for video in path_videos:
                 time=0
                 if(cnt>=max_sec):
                     break
+
             else:
               time+=1
         else:
@@ -73,7 +74,7 @@ for logfile in path_log:
     with open('logs/'+logfile,'r') as tf:
         lines = tf.read()
 
-    #stanza.download("es")
+    stanza.download("es") 
 
     nlp = stanza.Pipeline(lang='es')
     docas = nlp(lines)
